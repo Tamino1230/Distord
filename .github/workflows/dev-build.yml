@@ -1,11 +1,14 @@
 name: Dev Build
 
 on:
-  workflow_call:
-    inputs:
-        version:
-            required: true
-            type: string
+  push:
+    branches: [main]
+    paths-ignore:
+      - "README.md"
+      - ".gitignore"
+      - "LICENSE"
+      - "src/Build/*"
+      - "src/Assets/*"
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
