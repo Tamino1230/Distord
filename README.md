@@ -13,5 +13,5 @@
     <a target="_blank" href="https://github.com/Tamino1230/Distord/releases/latest/download/DistordInstallerWindows.exe">
         <img alt="Website" src="https://img.shields.io/badge/windows-instant_download_link-green">
     </a>
-    <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/Tamino1230/Distord/build.yml?label=Windows%20Build">
+    <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/Tamino1230/Distord/dev-build.yml?label=Windows%20Build">
 </p>
