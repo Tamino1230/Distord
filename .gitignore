@@ -1,0 +1,6 @@
+.env
+private/
+src/App/build/
+dist/
+src/Build/*.exe
+src/Build/Output/DistordInstallerWindows.exe
