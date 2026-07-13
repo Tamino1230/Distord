@@ -11,23 +11,40 @@ from textual.widgets import Header, Footer, Input, RichLog, Label
 from textual.containers import Horizontal, Vertical
 from textual.binding import Binding
 
-base_dir = os.environ.get('APPDATA') or os.path.expanduser('~/.config')
-CONFIG_DIR = os.path.join(base_dir, "Distord")
-os.makedirs(CONFIG_DIR, exist_ok=True)
+def get_config_dir() -> Path:
+    # Windows
+    if os.name == "nt":
+        base_dir = os.environ.get("APPDATA")
+        if not base_dir:
+            base_dir = Path.home() / "AppData" / "Roaming"
+    # Linux
+    else:
+        base_dir = os.environ.get("XDG_CONFIG_HOME")
+        if not base_dir:
+            base_dir = Path.home() / ".config"
 
-CONFIG_FILE = os.path.join(CONFIG_DIR, "config.json")
+    config_dir = Path(base_dir) / "Distord"
+    config_dir.mkdir(parents=True, exist_ok=True)
+
+    return config_dir
+
+
+CONFIG_DIR = get_config_dir()
+CONFIG_FILE = CONFIG_DIR / "config.json"
+
+
 def load_saved_token() -> str:
-    if os.path.exists(CONFIG_FILE):
+    if CONFIG_FILE.exists():
         try:
-            with open(CONFIG_FILE, "r") as f:
+            with open(CONFIG_FILE, "r", encoding="utf-8") as f:
                 return json.load(f).get("token", "")
         except Exception:
             return ""
     return ""
 
 def save_token(token: str):
-    with open(CONFIG_FILE, "w") as f:
-        json.dump({"token": token}, f)
+    with open(CONFIG_FILE, "w", encoding="utf-8") as f:
+        json.dump({"token": token}, f, indent=4)
 
 class TokenModal(ModalScreen[str]):
     CSS = """

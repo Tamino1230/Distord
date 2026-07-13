@@ -1,9 +1,19 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 import os
+import sys
 
 BASE_DIR = SPECPATH
-ICON_PATH = os.path.abspath(os.path.join(BASE_DIR, '..', 'Assets', 'icons', 'icon.ico'))
+
+if sys.platform == "win32":
+    ICON_PATH = os.path.abspath(
+        os.path.join(BASE_DIR, '..', 'Assets', 'icons', 'icon.ico')
+    )
+else:
+    # linux
+    ICON_PATH = os.path.abspath(
+        os.path.join(BASE_DIR, '..', 'Assets', 'icons', 'icon.png')
+    )
 
 a = Analysis(
     ['distord.py'],

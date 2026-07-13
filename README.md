@@ -14,4 +14,5 @@
         <img alt="Website" src="https://img.shields.io/badge/windows-instant_download_link-green">
     </a>
     <img alt="GitHub Actions Workflow Status" src="https://img.shields.io/github/actions/workflow/status/Tamino1230/Distord/dev-build.yml?label=Windows%20Build">
+    <img alt="total downloads" src="https://img.shields.io/github/downloads/Tamino1230/Distord/total">
 </p>
