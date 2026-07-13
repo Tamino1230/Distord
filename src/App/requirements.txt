@@ -1,2 +1,3 @@
 textual
 discord.py
+pyinstaller
