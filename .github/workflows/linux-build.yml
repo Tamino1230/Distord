@@ -52,5 +52,5 @@ jobs:
       - name: Upload Linux artifact
         uses: actions/upload-artifact@v6
         with:
-          name: devBuildDistord-linux
+          name: Distord-linux
           path: src/Build/Distord-Linux
