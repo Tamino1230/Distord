@@ -1,8 +1,11 @@
 #!/bin/bash
 
-set -e
+cd "../App/"
 
+python -m PyInstaller --version
 python -m PyInstaller --clean distord.spec
 
-cp dist/Distord ./Distord-Linux
-chmod +x ./Distord
+cd "dist"
+cp -f "Distord" "../../Build/Distord-Linux"
+
+chmod +x "../../Build/Distord-Linux"
