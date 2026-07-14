@@ -63,6 +63,10 @@
 git clone https://github.com/Tamino1230/Distord.git
 cd Distord
 
+cd src/App
+pip install -r requirements.txt
+cd ../../
+
 # windows build
 cd src/Build
 ./buildWindows.bat
@@ -72,6 +76,13 @@ chmod +x buildLinux.sh
 ./buildLinux.sh
 ```
 Then run the outputted file in the `src/Build` directory
+
+## Common Issues:
+| Issue | Solution |
+| --- | --- |
+| **Gateway crash**: Cannot connect to host discord.com_443 ssl:True ssl:certificate _verirfy_failed certificate very failed: unable to get local issueer certificate (_ssl.c:1010)\ | Build it on your device
+
+If you're Issue is not listed here please open an Issue
 
 ## MIT License
 [LICENSE](LICENSE)
