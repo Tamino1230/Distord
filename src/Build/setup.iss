@@ -16,7 +16,25 @@ Source: "icon.ico"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\Distord"; Filename: "{app}\Distord.exe"
-Name: "{commondesktop}\Distord"; Filename: "{app}\Distord.exe"; Tasks: desktopicon; IconFilename: "icon.ico"
+Name: "{commondesktop}\Distord"; Filename: "{app}\Distord.exe"; Tasks: desktopicon; IconFilename: "{app}\icon.ico"
 
 [Tasks]
 Name: "desktopicon"; Description: "Create a desktop icon"; GroupDescription: "Additional icons:"; Flags: unchecked
+
+[Registry]
+Root: HKCU; Subkey: "Environment"; \
+    ValueType: expandsz; ValueName: "Path"; \
+    ValueData: "{olddata};{app}"; \
+    Check: NeedsAddPath('{app}')
+
+[Code]
+
+function NeedsAddPath(Dir: string): Boolean;
+var
+  Path: string;
+begin
+  if not RegQueryStringValue(HKCU, 'Environment', 'Path', Path) then
+    Path := '';
+
+  Result := Pos(';' + UpperCase(Dir) + ';', ';' + UpperCase(Path) + ';') = 0;
+end;
